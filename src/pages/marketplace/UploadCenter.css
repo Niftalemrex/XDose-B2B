@@ -1,0 +1,167 @@
+/* UploadCenter.css - Glassmorphic Dark Theme */
+
+.upload-center-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #e5e5e5;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background layers (same as marketplace) */
+.upload-center-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.upload-center-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.95));
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Header */
+.upload-center-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.upload-center-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.5rem;
+}
+
+.upload-instructions {
+  font-size: 0.9rem;
+  color: #aaa;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Category tabs container */
+.category-selection {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Success message */
+.success-message {
+  position: relative;
+  background: rgba(16, 185, 129, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  color: #10b981;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideIn 0.3s ease-out;
+}
+
+.success-message .close-button {
+  background: none;
+  border: none;
+  color: #10b981;
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.5rem;
+}
+
+.success-message .close-button:hover {
+  color: #34d399;
+}
+
+/* Form container */
+.upload-form-container {
+  margin-bottom: 3rem;
+}
+
+/* Guidelines aside */
+.upload-guidelines {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.upload-guidelines h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.upload-guidelines ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.upload-guidelines li {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.875rem;
+  color: #ccc;
+}
+
+.upload-guidelines li::before {
+  content: '•';
+  position: absolute;
+  left: 0.5rem;
+  color: #4f46e5;
+  font-weight: bold;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .upload-center-container {
+    padding: 1rem;
+  }
+
+  .upload-center-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .upload-guidelines {
+    padding: 1rem;
+  }
+}

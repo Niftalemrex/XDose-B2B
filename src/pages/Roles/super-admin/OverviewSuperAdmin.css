@@ -1,0 +1,108 @@
+.overview-superadmin {
+    padding: 2rem;
+    background: #f8fafc;
+    color: #1e293b;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+  }
+  
+  .overview-superadmin h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #0f172a;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.25rem;
+  }
+  
+  .overview-superadmin .subtitle {
+    color: #475569;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-card {
+    background: white;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+  }
+  
+  .stat-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+  }
+  
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+  }
+  
+  .chart-card {
+    background: white;
+    border-radius: 1rem;
+    border: 1px solid #e2e8f0;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .chart-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    color: #0f172a;
+  }
+  
+  .chart-container {
+    height: 300px;
+  }
+  
+  .overview-loading {
+    text-align: center;
+    padding: 3rem;
+    background: #f8fafc;
+    color: #475569;
+  }
+  
+  @media (max-width: 768px) {
+    .overview-superadmin {
+      padding: 1rem;
+    }
+    .stats-grid {
+      gap: 1rem;
+    }
+    .stat-card {
+      padding: 1rem;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+    }
+    .chart-container {
+      height: 240px;
+    }
+  }

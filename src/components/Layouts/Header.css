@@ -1,0 +1,203 @@
+/* Header.css */
+.header {
+  position: sticky;
+  top: 1rem;
+  z-index: 50;
+  max-width: 80rem;          /* ← narrower width */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .header {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* Desktop navigation – centered */
+.nav-links-desktop {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 0 auto;           /* center within available space */
+}
+
+@media (min-width: 768px) {
+  .nav-links-desktop {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.nav-links-desktop a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  color: #d4d4d8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links-desktop a:hover {
+  color: white;
+}
+
+.nav-links-desktop .active {
+  color: white;
+}
+
+/* Right side actions (cart + login) */
+.right-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.cart-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: #d4d4d8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cart-link:hover {
+  color: white;
+}
+
+.cart-link.active {
+  color: white;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.75rem;
+  background-color: #ef4444;
+  color: white;
+  border-radius: 9999px;
+  width: 1.25rem;
+  height: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-button {
+  display: inline-block;
+  background-color: white;
+  color: #111;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #f0f0f0;
+}
+
+.login-button.active {
+  background-color: #e5e5e5;
+}
+
+/* Hamburger */
+.hamburger {
+  display: block;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Mobile menu */
+.mobile-menu {
+  margin-top: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  font-family: 'Geist', system-ui, -apple-system, sans-serif;
+  color: #d4d4d8;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.mobile-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu .active {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.cart-badge-mobile {
+  background-color: #ef4444;
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0 0.25rem;
+  margin-left: 0.5rem;
+  display: inline-block;
+  min-width: 1.25rem;
+  text-align: center;
+}

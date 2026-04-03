@@ -1,0 +1,151 @@
+/* PharmacistSidebar.css - Slim, sticky sidebar */
+.pharmacist-sidebar {
+  width: 240px;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2rem 0;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  overflow-y: auto;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* Custom scrollbar */
+.pharmacist-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.pharmacist-sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+.pharmacist-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.pharmacist-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Logo / Header */
+.pharmacist-sidebar h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: -0.02em;
+  padding: 0 1rem 1.2rem;
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pharmacist-sidebar h2::before {
+  content: '💊';
+  font-size: 1.2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+/* Navigation list */
+.pharmacist-sidebar ul {
+  list-style: none;
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.pharmacist-sidebar li {
+  margin: 0.25rem 0;
+}
+
+/* Links & buttons */
+.pharmacist-sidebar a,
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  border-left: 3px solid transparent;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1.4;
+}
+
+/* Icons for links */
+.pharmacist-sidebar a::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.pharmacist-sidebar a[href*="OverviewPharmacist"]::before { content: '📊'; }
+.pharmacist-sidebar a[href*="SupplierChat"]::before { content: '💬'; }
+.pharmacist-sidebar a[href*="MyUploads"]::before { content: '📁'; }
+.pharmacist-sidebar a[href*="UploadCenter"]::before { content: '⬆️'; }
+.pharmacist-sidebar a[href*="Cart"]::before { content: '🛒'; }
+.pharmacist-sidebar a[href*="marketplace/marketdashboard"]::before { content: '🏪'; }
+
+.logout-button::before {
+  content: '🚪';
+  display: inline-block;
+  width: 20px;
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+/* Hover & active states */
+.pharmacist-sidebar a:hover,
+.logout-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border-left-color: #4f46e5;
+  transform: translateX(2px);
+}
+
+.pharmacist-sidebar a.active {
+  background: linear-gradient(90deg, rgba(79, 70, 229, 0.15), transparent);
+  color: white;
+  border-left-color: #4f46e5;
+  font-weight: 600;
+}
+
+/* Separator line */
+.separator {
+  margin: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pharmacist-sidebar {
+    width: 100%;
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem 0;
+  }
+  .pharmacist-sidebar h2 {
+    padding: 0 1rem 1rem;
+  }
+  .pharmacist-sidebar a,
+  .logout-button {
+    padding: 0.6rem 1rem;
+  }
+}

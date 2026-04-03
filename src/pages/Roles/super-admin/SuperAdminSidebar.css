@@ -1,0 +1,83 @@
+/* SuperAdminSidebar.css */
+.superadmin-sidebar {
+    width: 240px;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border-right: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem 0;
+    height: 100%;
+    overflow-y: auto;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  .superadmin-sidebar h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: -0.02em;
+    padding: 0 1rem 1.2rem;
+    margin: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .superadmin-sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+  }
+  
+  .superadmin-sidebar a,
+  .logout-button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  .superadmin-sidebar a:hover,
+  .logout-button:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border-left-color: #4f46e5;
+    transform: translateX(2px);
+  }
+  
+  .superadmin-sidebar a.active {
+    background: linear-gradient(90deg, rgba(79,70,229,0.15), transparent);
+    color: white;
+    border-left-color: #4f46e5;
+    font-weight: 600;
+  }
+  
+  .separator {
+    margin: 1rem 0;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  
+  /* Custom scrollbar */
+  .superadmin-sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .superadmin-sidebar::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+  }
+  .superadmin-sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+  }

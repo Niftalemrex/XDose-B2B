@@ -1,0 +1,389 @@
+/* UploadForm.css - Professional Form Styling */
+
+.upload-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.upload-form h2 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/* Form Fields */
+.upload-form input:not([type="checkbox"]),
+.upload-form select,
+.upload-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: #1e293b;
+  background: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.upload-form input:not([type="checkbox"]):focus,
+.upload-form select:focus,
+.upload-form textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.upload-form input:not([type="checkbox"]):hover,
+.upload-form select:hover,
+.upload-form textarea:hover {
+  border-color: #cbd5e1;
+}
+
+.upload-form input::placeholder,
+.upload-form select::placeholder,
+.upload-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* Textarea specific */
+.upload-form textarea {
+  min-height: 80px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Labels */
+.upload-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+/* Checkbox styling */
+.upload-form label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.upload-form input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+  accent-color: #4f46e5;
+  margin: 0;
+}
+
+/* File upload styling */
+.upload-form input[type="file"] {
+  padding: 0.5rem;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.upload-form input[type="file"]:hover {
+  border-color: #4f46e5;
+  background: #fefce8;
+}
+
+/* Image preview */
+.upload-form div:has(img) {
+  margin: 1rem 0;
+  position: relative;
+  display: inline-block;
+}
+
+.upload-form img {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  object-fit: cover;
+}
+
+.upload-form button[type="button"] {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-form button[type="button"]:hover {
+  background: #dc2626;
+}
+
+/* Error messages */
+.upload-form .error {
+  display: block;
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: -0.75rem;
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+/* Submit button */
+.upload-form button[type="submit"] {
+  width: 100%;
+  padding: 0.875rem;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.upload-form button[type="submit"]:hover:not(:disabled) {
+  background: #6366f1;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+.upload-form button[type="submit"]:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.upload-form button[type="submit"]:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Loading state for submit button */
+.upload-form button[type="submit"]:disabled::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  right: 1rem;
+  margin-top: -8px;
+  border: 2px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+/* Form sections grouping */
+.upload-form hr {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Section headers */
+.upload-form .section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 1rem 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Required field indicator */
+.upload-form .required::after {
+  content: '*';
+  color: #ef4444;
+  margin-left: 0.25rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .upload-form {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .upload-form h2 {
+    font-size: 1.25rem;
+  }
+  
+  .upload-form input:not([type="checkbox"]),
+  .upload-form select,
+  .upload-form textarea {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-form {
+    padding: 1rem;
+  }
+  
+  .upload-form h2 {
+    font-size: 1.125rem;
+  }
+  
+  .upload-form button[type="submit"] {
+    padding: 0.75rem;
+  }
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Focus visible for accessibility */
+.upload-form input:focus-visible:not([type="checkbox"]),
+.upload-form select:focus-visible,
+.upload-form textarea:focus-visible,
+.upload-form button:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* Disabled fields styling */
+.upload-form input:disabled,
+.upload-form select:disabled,
+.upload-form textarea:disabled {
+  background: #f1f5f9;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Number input specific styling */
+.upload-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.upload-form input[type="number"]::-webkit-inner-spin-button,
+.upload-form input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
+
+.upload-form input[type="number"]:hover::-webkit-inner-spin-button,
+.upload-form input[type="number"]:hover::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
+/* Date input styling */
+.upload-form input[type="date"] {
+  font-family: inherit;
+  color-scheme: light;
+}
+
+.upload-form input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.upload-form input[type="date"]:hover::-webkit-calendar-picker-indicator {
+  opacity: 1;
+}
+
+/* Select dropdown styling */
+.upload-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  padding-right: 2.5rem;
+}
+
+/* Tooltip for help text */
+.upload-form .help-text {
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: -0.75rem;
+  margin-bottom: 0.75rem;
+  padding-left: 0.25rem;
+}
+
+/* Success message styling (if needed) */
+.upload-form .success-message {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bbf7d0;
+  font-size: 0.875rem;
+}
+
+/* Error message styling for form-level errors */
+.upload-form .form-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #fecaca;
+  font-size: 0.875rem;
+}
+
+/* Grid layout for side-by-side fields (optional) */
+.upload-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .upload-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* Card-like grouping for sections */
+.upload-form .form-section {
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+/* Print styles */
+@media print {
+  .upload-form {
+    border: none;
+    padding: 0;
+  }
+  
+  .upload-form button,
+  .upload-form input[type="file"] {
+    display: none;
+  }
+}

@@ -1,0 +1,173 @@
+/* ChatPage.css - Glassmorphic Dark Theme */
+
+.chat-page-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #e5e5e5;
+  position: relative;
+}
+
+/* Background layers (same as other pages) */
+.chat-page-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.chat-page-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.95));
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Header with contact and product info */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+}
+
+.contact-info h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 0.25rem;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator.online {
+  background-color: #10b981;
+  box-shadow: 0 0 4px #10b981;
+}
+
+.product-info {
+  text-align: right;
+}
+
+.product-info h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.product-info p {
+  font-size: 0.75rem;
+  margin: 0.25rem 0 0;
+  color: #aaa;
+}
+
+/* Chat content area */
+.chat-content {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* The ChatBox component will fill the area – we can style its container if needed */
+/* If ChatBox has its own styles, they will apply here */
+
+/* Error message */
+.chat-error {
+  padding: 1rem;
+  margin: 1rem;
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 0.5rem;
+  color: #ef4444;
+  text-align: center;
+}
+
+/* Loading state */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  margin: 2rem auto;
+  max-width: 300px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chat-page-container {
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+
+  .chat-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .product-info {
+    text-align: left;
+    width: 100%;
+  }
+
+  .chat-content {
+    height: 60vh;
+  }
+}

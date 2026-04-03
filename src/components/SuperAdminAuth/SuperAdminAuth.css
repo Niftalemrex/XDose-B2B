@@ -1,0 +1,142 @@
+/* SuperAdminAuth.css - Dark Glassmorphic Theme */
+.superadmin-login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0a;
+    position: relative;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Background layers */
+  .superadmin-login-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 16px 16px;
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .superadmin-login-container::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.95));
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .superadmin-login-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 400px;
+    margin: 1rem;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1.5rem;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    transition: transform 0.2s;
+  }
+  
+  .superadmin-login-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .superadmin-login-card h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white;
+    letter-spacing: -0.025em;
+  }
+  
+  .superadmin-login-card .subtitle {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+  }
+  
+  .superadmin-login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .superadmin-login-card input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0.75rem;
+    color: white;
+    font-size: 0.875rem;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+  }
+  
+  .superadmin-login-card input:focus {
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.15);
+  }
+  
+  .superadmin-login-card input::placeholder {
+    color: rgba(255,255,255,0.5);
+  }
+  
+  .error-message {
+    background: rgba(239,68,68,0.2);
+    border-left: 3px solid #ef4444;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    color: #ef4444;
+    margin: 0.5rem 0;
+    text-align: center;
+  }
+  
+  .superadmin-login-btn {
+    background: white;
+    color: #111;
+    border: none;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  
+  .superadmin-login-btn:hover:not(:disabled) {
+    background: #f0f0f0;
+  }
+  
+  .superadmin-login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 480px) {
+    .superadmin-login-card {
+      padding: 1.5rem 1rem;
+      margin: 1rem;
+    }
+    .superadmin-login-card h2 {
+      font-size: 1.5rem;
+    }
+  }

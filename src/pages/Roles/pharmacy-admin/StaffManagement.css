@@ -1,0 +1,178 @@
+/* StaffManagement.css - Professional Business Style */
+
+.staff-management {
+  padding: 2rem;
+  background: #f8fafc;
+  color: #1e293b;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.staff-management h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.staff-management > p {
+  color: #475569;
+  margin-bottom: 2rem;
+}
+
+.staff-table {
+  width: 100%;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.staff-table th,
+.staff-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+}
+
+.staff-table th {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+}
+
+.staff-table tbody tr {
+  transition: background 0.2s;
+}
+
+.staff-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.staff-table .inactive-row {
+  background: #fef2f2;
+  opacity: 0.8;
+}
+
+/* Status badge */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.status-badge.active {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.status-badge.inactive {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+/* Action buttons */
+.actions {
+  white-space: nowrap;
+}
+
+.status-toggle,
+.delete-permanent {
+  padding: 0.35rem 0.75rem;
+  margin-right: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.status-toggle.activate {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.status-toggle.deactivate {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+.status-toggle:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.delete-permanent {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.delete-permanent:hover:not(:disabled) {
+  background: #fee2e2;
+  transform: translateY(-1px);
+}
+
+.status-toggle:disabled,
+.delete-permanent:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.self-note {
+  font-style: italic;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.no-staff {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.staff-loading,
+.staff-error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .staff-management {
+    padding: 1rem;
+  }
+  .staff-table th,
+  .staff-table td {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+  }
+  .status-toggle,
+  .delete-permanent {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
