@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useUser } from '../../../context/UserContext';
 import { supabaseAdmin } from '../../../lib/supabase';
 import ChatBox from './ChatBox';
@@ -71,7 +71,7 @@ const SupplierChat: React.FC = () => {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [selectedConv, setSelectedConv] = useState<Conversation | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
+
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -348,7 +348,7 @@ const SupplierChat: React.FC = () => {
               currentUser={{ id: user?.id || '', name: 'You' }}
               contactName={selectedConv.customerName}
               onSend={handleSend}
-              isTyping={isTyping}
+            
             />
             <div ref={chatEndRef} />
           </>

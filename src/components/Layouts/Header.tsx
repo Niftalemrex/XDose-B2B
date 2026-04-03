@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink,  } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './Header.css';
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+
   const { totalItems } = useCart();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
-  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header className="header">

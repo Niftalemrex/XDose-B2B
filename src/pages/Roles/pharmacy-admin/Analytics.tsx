@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, } from 'react';
 import { useUser } from '../../../context/UserContext';
 import { supabaseAdmin } from '../../../lib/supabase';
 import {
@@ -72,11 +72,7 @@ const Analytics: React.FC = () => {
   };
 
   // Helper to get month start/end
-  const getMonthRange = (year: number, month: number) => {
-    const start = new Date(year, month, 1);
-    const end = new Date(year, month + 1, 0);
-    return { start, end };
-  };
+
 
   // Fetch all data
   useEffect(() => {
@@ -198,7 +194,7 @@ const Analytics: React.FC = () => {
     if (hasFetched.current && user?.company_id) {
       // Reset fetch flag and trigger refetch
       hasFetched.current = false;
-      const fetch = async () => {
+      //const fetch = async () => {
         // This will cause the main useEffect to run again because hasFetched is false
         // We need to call fetchData again, but the useEffect already has trendPeriod dependency.
         // So we can simply force a re-fetch by setting hasFetched to false and then the main useEffect will run again.
@@ -206,7 +202,7 @@ const Analytics: React.FC = () => {
       };
       // Actually, we'll just let the main useEffect re-run because dependency includes trendPeriod.
       // But to prevent double fetch we can keep the current logic – the useEffect will run when trendPeriod changes.
-    }
+  //  }
   }, [trendPeriod]);
 
   const exportToCSV = async () => {

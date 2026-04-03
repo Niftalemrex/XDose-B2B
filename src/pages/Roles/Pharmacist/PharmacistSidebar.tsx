@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, } from "react-router-dom";
 import { useUser } from "../../../context/UserContext";
 import "./PharmacistSidebar.css";
 
 const PharmacistSidebar: React.FC = () => {
-  const navigate = useNavigate();
+ 
   const { setUser } = useUser();
 
   const handleLogout = () => {

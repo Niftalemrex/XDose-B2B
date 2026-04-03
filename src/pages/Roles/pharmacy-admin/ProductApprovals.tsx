@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useUser } from '../../../context/UserContext';
 import { supabaseAdmin } from '../../../lib/supabase';
-import { calculateDaysLeft, getStatusColor } from '../../../utils/expiryUtils';
+import { calculateDaysLeft, } from '../../../utils/expiryUtils';
 import { categories, type ProductCategory } from '../../../data/categories';
 import './ProductApprovals.css';
 
