@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { Link, NavLink,  } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './Header.css';
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
   const { totalItems } = useCart();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
-
 
   return (
     <header className="header">
@@ -18,7 +16,7 @@ const Header: React.FC = () => {
         {/* Logo */}
         <Link to="/marketplace/marketdashboard" className="logo" onClick={closeMenu}>
           <svg width="92" height="36" viewBox="0 0 92 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Paste your logo SVG here – use the one from previous examples */}
+            {/* Paste your logo SVG here */}
           </svg>
         </Link>
 
@@ -26,21 +24,21 @@ const Header: React.FC = () => {
         <nav className="nav-links-desktop">
           <NavLink
             to="/marketplace/marketdashboard"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             Browse
           </NavLink>
           <NavLink
             to="/about"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             About
           </NavLink>
           <NavLink
             to="/contact"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             Contact
@@ -51,7 +49,7 @@ const Header: React.FC = () => {
         <div className="right-actions">
           <NavLink
             to="/Pharmacist/Cart"
-            className={({ isActive: active }) => `cart-link ${active ? 'active' : ''}`}
+            className={({ isActive }) => `cart-link ${isActive ? 'active' : ''}`}
             onClick={closeMenu}
           >
             <span className="cart-icon">🛒</span>
@@ -59,7 +57,7 @@ const Header: React.FC = () => {
           </NavLink>
           <NavLink
             to="/auth/login"
-            className={({ isActive: active }) => `login-button ${active ? 'active' : ''}`}
+            className={({ isActive }) => `login-button ${isActive ? 'active' : ''}`}
             onClick={closeMenu}
           >
             Sign in
@@ -77,35 +75,35 @@ const Header: React.FC = () => {
         <div className="mobile-menu">
           <NavLink
             to="/marketplace/marketdashboard"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             Browse
           </NavLink>
           <NavLink
             to="/about"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             About
           </NavLink>
           <NavLink
             to="/contact"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             Contact
           </NavLink>
           <NavLink
             to="/Pharmacist/Cart"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             Cart {totalItems > 0 && <span className="cart-badge-mobile">{totalItems}</span>}
           </NavLink>
           <NavLink
             to="/auth/login"
-            className={({ isActive: active }) => active ? 'active' : ''}
+            className={({ isActive }) => (isActive ? 'active' : '')}
             onClick={closeMenu}
           >
             Sign in

@@ -6,6 +6,8 @@
   position: relative;
   min-height: 100vh;
   padding-bottom: 2rem;
+  padding-top: 80px;
+  overflow-x: hidden;
 }
 
 /* Background layers (fixed) */
@@ -35,11 +37,10 @@
 /* Hero section – normal block layout */
 .hero-section {
   max-width: 1280px;
-  margin: 2rem auto 0;      /* reduced margin – content now sits below image */
+  margin: 2rem auto 0;
   padding: 0 1rem;
 }
 
-/* Image container */
 .hero-image-container {
   position: relative;
   border-radius: 1.5rem;
@@ -49,7 +50,7 @@
 
 .hero-image {
   width: 100%;
-  height: 50vh;            /* comfortable height */
+  height: 50vh;
   object-fit: cover;
 }
 
@@ -60,7 +61,6 @@
   pointer-events: none;
 }
 
-/* Content – now a normal block below the image */
 .hero-content {
   margin-top: 2rem;
   color: white;
@@ -92,7 +92,7 @@
   margin-bottom: 1.5rem;
 }
 
-/* Search panel – stays inside hero-content */
+/* Search panel */
 .search-panel {
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(16px);
@@ -204,11 +204,14 @@
   padding: 0 1rem;
 }
 
-/* Products section */
+/* Products section – overflow fixed */
 .products-section {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1rem;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .section-header {
@@ -228,13 +231,17 @@
   color: #aaa;
 }
 
+/* Product grid – desktop */
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
   gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
-/* Product card – compact */
+/* Product card – desktop */
 .product-card {
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(8px);
@@ -242,6 +249,10 @@
   border-radius: 0.75rem;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .product-card:hover {
@@ -362,39 +373,295 @@
   margin: 1rem 0;
 }
 
-/* Responsive */
+/* ============================================ */
+/* MOBILE – TWO COLUMNS SIDE BY SIDE, COMPACT   */
+/* ============================================ */
 @media (max-width: 768px) {
+  .dashboard {
+    padding-top: 85px;
+  }
   .hero-section {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    padding: 0 0.5rem;
   }
   .hero-image {
-    height: 40vh;
+    height: 15vh;
+    border-radius: 0.5rem;
   }
   .hero-content {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+  }
+  .hero-badge {
+    font-size: 0.45rem;
+    padding: 0.1rem 0.4rem;
+    margin-bottom: 0.2rem;
   }
   .hero-content h1 {
-    font-size: 1.2rem;
-    max-width: 100%;
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
   }
   .hero-content p {
-    max-width: 100%;
-    font-size: 0.75rem;
+    font-size: 0.55rem;
+    margin-bottom: 0.5rem;
   }
   .search-panel {
-    padding: 0.5rem;
+    padding: 0.25rem;
+  }
+  .search-row {
+    margin-bottom: 0.25rem;
+  }
+  .search-input {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.55rem;
+  }
+  .search-button {
+    padding: 0 0.5rem;
+    font-size: 0.55rem;
   }
   .filter-row {
     flex-direction: column;
-    align-items: stretch;
+    gap: 0.25rem;
   }
   .filter-group {
     width: 100%;
+    min-width: auto;
   }
+  .filter-group label {
+    font-size: 0.4rem;
+  }
+  .filter-group select,
+  .filter-group input {
+    padding: 0.15rem;
+    font-size: 0.55rem;
+  }
+  .clear-filters {
+    padding: 0.15rem 0.3rem;
+    font-size: 0.55rem;
+    width: 100%;
+  }
+  .category-section {
+    margin: 0.5rem auto;
+  }
+
+  /* Products section – compact width, two columns */
+  .products-section {
+    padding: 0 0.25rem;
+    margin: 0;
+  }
+  .section-header {
+    margin-bottom: 0.3rem;
+  }
+  .section-header h2 {
+    font-size: 0.7rem;
+  }
+  .product-count {
+    font-size: 0.5rem;
+  }
+
+  /* Product grid – two columns side by side, very compact */
   .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* two equal columns */
+    gap: 0.3rem;
   }
   .product-image-container {
-    height: 120px;
+    height: 45px;           /* tiny image */
+  }
+  .product-content {
+    padding: 0.15rem;
+  }
+  .product-name {
+    font-size: 0.55rem;
+    margin-bottom: 0.05rem;
+  }
+  .product-strength {
+    font-size: 0.45rem;
+    margin-bottom: 0.1rem;
+  }
+  .product-details {
+    font-size: 0.45rem;
+    margin: 0.1rem 0;
+  }
+  .detail-row {
+    padding: 0.05rem 0;
+  }
+  .product-footer {
+    margin-top: 0.15rem;
+    gap: 0.1rem;
+  }
+  .quick-add-button {
+    padding: 0.15rem;
+    font-size: 0.5rem;
+  }
+  .action-button {
+    padding: 0.1rem;
+    font-size: 0.45rem;
+  }
+}
+/* ============================================ */
+/* MOBILE – TWO COLUMNS SIDE BY SIDE, COMPACT   */
+/* ============================================ */
+@media (max-width: 750px) {
+  .dashboard {
+    padding-top: 165px;
+  }
+  .hero-section {
+    margin-top: 0.5rem;
+    padding: 0 0.5rem;
+  }
+  .hero-image {
+    height: 15vh;
+    border-radius: 0.5rem;
+  }
+  .hero-content {
+    margin-top: 0.5rem;
+  }
+  .hero-badge {
+    font-size: 0.45rem;
+    padding: 0.1rem 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+  .hero-content h1 {
+    font-size: 0.85rem;
+    padding: 0.1rem 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+  .hero-content p {
+    font-size: 0.55rem;
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .search-panel {
+    padding: 1.0rem;
+  }
+  .search-row {
+    margin-bottom: 0.25rem;
+  }
+  .search-input {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.55rem;
+  }
+  .search-button {
+    padding: 0 0.5rem;
+    font-size: 0.55rem;
+  }
+  .filter-row {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .filter-group {
+    width: 100%;
+    min-width: auto;
+  }
+  .filter-group label {
+    font-size: 0.4rem;
+  }
+  .filter-group select,
+  .filter-group input {
+    padding: 0.15rem;
+    font-size: 0.55rem;
+  }
+  .clear-filters {
+    padding: 0.15rem 0.3rem;
+    font-size: 0.55rem;
+    width: 100%;
+  }
+  .category-section {
+    margin: 0.5rem auto;
+  }
+
+  /* Products section – compact width, two columns */
+  .products-section {
+    padding: 0 0.25rem;
+    margin: 0;
+  }
+  .section-header {
+    margin-bottom: 0.3rem;
+  }
+  .section-header h2 {
+    font-size: 0.7rem;
+  }
+  .product-count {
+    font-size: 0.5rem;
+  }
+
+  /* Product grid – two columns side by side, very compact */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* two equal columns */
+    gap: 0.3rem;
+  }
+  .product-image-container {
+    height: 45px;           /* tiny image */
+  }
+  .product-content {
+    padding: 0.15rem;
+  }
+  .product-name {
+    font-size: 0.55rem;
+    margin-bottom: 0.05rem;
+  }
+  .product-strength {
+    font-size: 0.45rem;
+    margin-bottom: 0.1rem;
+  }
+  .product-details {
+    font-size: 0.45rem;
+    margin: 0.1rem 0;
+  }
+  .detail-row {
+    padding: 0.05rem 0;
+  }
+  .product-footer {
+    margin-top: 0.15rem;
+    gap: 0.1rem;
+  }
+  .quick-add-button {
+    padding: 0.15rem;
+    font-size: 0.5rem;
+  }
+  .action-button {
+    padding: 0.1rem;
+    font-size: 0.45rem;
+  }
+}
+
+/* ============================================ */
+/* EXTRA SMALL PHONES – STILL TWO COLUMNS, BUT TINIER */
+/* ============================================ */
+@media (max-width: 480px) {
+  .dashboard {
+    padding-top: 90px;
+  }
+  .hero-image {
+    height: 12vh;
+  }
+  .hero-content h1 {
+    font-size: 0.75rem;
+  }
+  .hero-content p {
+    font-size: 0.5rem;
+  }
+  .products-section {
+    padding: 0 0.15rem;
+  }
+  .section-header h2 {
+    font-size: 0.65rem;
+  }
+  .product-grid {
+    gap: 0.2rem;
+  }
+  .product-image-container {
+    height: 35px;
+  }
+  .product-name {
+    font-size: 0.5rem;
+  }
+  .quick-add-button {
+    font-size: 0.45rem;
+    padding: 0.1rem;
+  }
+  .action-button {
+    font-size: 0.4rem;
   }
 }

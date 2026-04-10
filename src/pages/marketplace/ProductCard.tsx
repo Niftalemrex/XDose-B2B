@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';          // ✅ add this
+import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import './ProductCard.css';
 
@@ -47,18 +47,17 @@ const formatUploadDate = (dateStr?: string) => {
 };
 
 const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
-  const navigate = useNavigate();                // ✅ useNavigate hook
+  const navigate = useNavigate();
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    if (!product.price) {
-      alert('Price not available');
-      return;
-    }
+    // Use price if available, otherwise default to 0
+    const productPrice = product.price ? parseFloat(product.price) : 0;
+    
     addToCart({
       productId: product.id,
       name: product.name,
-      price: parseFloat(product.price),
+      price: productPrice,
       photoUrl: product.photoUrl,
       strength: product.strength,
       maxQuantity: product.quantity,
@@ -67,7 +66,6 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
     alert(`Added ${product.name} to cart`);
   };
 
-  // ✅ Navigation handlers
   const handleDetails = () => {
     navigate(`/product/${product.id}`);
   };
@@ -104,10 +102,15 @@ const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
         </div>
 
         <div className="product-details">
-          {product.price && (
+          {product.price ? (
             <div className="detail-row">
               <span className="detail-label">Price:</span>
               <span className="detail-value">ETB {product.price}</span>
+            </div>
+          ) : (
+            <div className="detail-row">
+              <span className="detail-label">Price:</span>
+              <span className="detail-value">Free</span>
             </div>
           )}
           <div className="detail-row">

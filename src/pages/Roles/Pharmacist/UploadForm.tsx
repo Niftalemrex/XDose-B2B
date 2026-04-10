@@ -21,7 +21,7 @@ interface FormData {
   expiryDate: string;
   quantity: string;
   supplier: string;
-  location_name: string;        // user-entered location name
+  location_name: string;
   specificLocation: string;
   batchNumber: string;
   price: string;
@@ -108,7 +108,6 @@ const UploadForm: React.FC<UploadFormProps> = ({ category, onSuccess }) => {
     if (!formData.name.trim()) newErrors.name = "Product name is required";
     if (!formData.location_name.trim()) newErrors.location_name = "Location name is required";
 
-    // Always require expiry date (no category check)
     if (!formData.expiryDate) {
       newErrors.expiryDate = "Expiry date is required";
     }
@@ -116,21 +115,21 @@ const UploadForm: React.FC<UploadFormProps> = ({ category, onSuccess }) => {
     if (!formData.quantity || isNaN(Number(formData.quantity)))
       newErrors.quantity = "Quantity must be a number";
 
-    if (categoryConfig.showPriceField && (!formData.price || isNaN(Number(formData.price))))
+    // Price is optional: only validate if a value is provided and it's not a number
+    if (formData.price && isNaN(Number(formData.price))) {
       newErrors.price = "Price must be a number";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
-  }, [formData, categoryConfig]);
+  }, [formData]);
 
-  // ✅ Get or create location (matches your table structure)
   const getOrCreateLocation = async (locationName: string): Promise<string> => {
     if (!user?.company_id) throw new Error("Company ID missing");
 
     const trimmedName = locationName.trim();
     if (!trimmedName) throw new Error("Location name cannot be empty");
 
-    // Try to find existing location for this company
     const { data: existing, error: findError } = await supabaseAdmin
       .from("locations")
       .select("id")
@@ -138,11 +137,10 @@ const UploadForm: React.FC<UploadFormProps> = ({ category, onSuccess }) => {
       .eq("company_id", user.company_id)
       .maybeSingle();
 
-    if (findError && findError.code !== "PGRST116") throw findError; // PGRST116 = no rows
+    if (findError && findError.code !== "PGRST116") throw findError;
 
     if (existing) return existing.id;
 
-    // Create new location (only set name and company_id; city/region/country remain NULL)
     const { data: newLocation, error: insertError } = await supabaseAdmin
       .from("locations")
       .insert({ name: trimmedName, company_id: user.company_id })
@@ -193,7 +191,7 @@ const UploadForm: React.FC<UploadFormProps> = ({ category, onSuccess }) => {
         location_id: locationId,
         specific_location: formData.specificLocation || null,
         batch_number: formData.batchNumber || null,
-        price: formData.price ? Number(formData.price) : null,
+        price: formData.price ? Number(formData.price) : null,  // optional, can be null
         discount: formData.discount ? Number(formData.discount) : autoDiscount || null,
         category,
         company_id: user.company_id,
@@ -261,14 +259,17 @@ const UploadForm: React.FC<UploadFormProps> = ({ category, onSuccess }) => {
       <input name="quantity" type="number" value={formData.quantity} onChange={handleChange} placeholder="Quantity" />
       {errors.quantity && <span className="error">{errors.quantity}</span>}
 
-      {categoryConfig.showPriceField && (
-        <>
-          <input name="price" type="number" value={formData.price} onChange={handleChange} placeholder="Unit Price" />
-          {errors.price && <span className="error">{errors.price}</span>}
-        </>
-      )}
+      {/* ✅ Price field is now ALWAYS shown and optional */}
+      <input 
+        name="price" 
+        type="number" 
+        value={formData.price} 
+        onChange={handleChange} 
+        placeholder="Unit Price (optional)" 
+        step="0.01"
+      />
+      {errors.price && <span className="error">{errors.price}</span>}
 
-      {/* Always show expiry date field */}
       <input
         name="expiryDate"
         type="date"
