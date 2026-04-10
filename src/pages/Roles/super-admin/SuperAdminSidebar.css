@@ -1,83 +1,252 @@
-/* SuperAdminSidebar.css */
+/* Modern SuperAdmin Sidebar - White Glass, Curved, SVG Icons */
 .superadmin-sidebar {
-    width: 240px;
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(12px);
-    border-right: 1px solid rgba(255,255,255,0.08);
-    padding: 2rem 0;
-    height: 100%;
-    overflow-y: auto;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-right: none;
+  padding: 1.5rem 0.75rem;
+  margin: 1rem 0 1rem 1rem;
+  border-radius: 2rem;
+  height: calc(100vh - 2rem);
+  overflow-y: auto;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+  box-shadow: 
+    0 20px 40px -12px rgba(0, 0, 0, 0.06),
+    0 4px 18px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+  position: sticky;
+  top: 1rem;
+}
+
+/* Custom scrollbar - light and subtle */
+.superadmin-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.superadmin-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+  margin-block: 1rem;
+}
+.superadmin-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 20px;
+}
+.superadmin-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Logo / Header */
+.superadmin-sidebar h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e1e2f;
+  letter-spacing: -0.02em;
+  padding: 0.5rem 1rem 1.2rem;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* SuperAdmin shield/crown icon as SVG */
+.superadmin-sidebar h2::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2l3 6 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1 3-6z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.02));
+  background-color: white;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+/* Navigation */
+.superadmin-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem 0;
+}
+
+/* Links & logout button - modern pill shape */
+.superadmin-sidebar a,
+.superadmin-sidebar .logout-button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  margin: 0.2rem 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2a2a3c;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  border-left: none;
+  border-radius: 1rem;
+  background: transparent;
+  width: auto;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1.4;
+  position: relative;
+}
+
+/* Icons container - SVG based */
+.superadmin-sidebar a::before,
+.superadmin-sidebar .logout-button::before {
+  content: '';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  transition: all 0.2s;
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Default icon for unspecified links */
+.superadmin-sidebar a::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2a3c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 8v8'/%3E%3Cpath d='M8 12h8'/%3E%3C/svg%3E");
+}
+
+/* Specific icons based on common superadmin routes */
+.superadmin-sidebar a[href*="dashboard"]::before,
+.superadmin-sidebar a[href*="Dashboard"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2a3c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7'/%3E%3Crect x='14' y='3' width='7' height='7'/%3E%3Crect x='14' y='14' width='7' height='7'/%3E%3Crect x='3' y='14' width='7' height='7'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a[href*="companies"]::before,
+.superadmin-sidebar a[href*="Companies"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2a3c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='14' rx='2' ry='2'/%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a[href*="users"]::before,
+.superadmin-sidebar a[href*="Users"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2a3c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a[href*="analytics"]::before,
+.superadmin-sidebar a[href*="Analytics"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2a3c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3v18h18'/%3E%3Cpath d='M18 17V9'/%3E%3Cpath d='M13 17V5'/%3E%3Cpath d='M8 17v-3'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a[href*="settings"]::before,
+.superadmin-sidebar a[href*="Settings"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2a3c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z'/%3E%3C/svg%3E");
+}
+
+/* Logout button icon */
+.superadmin-sidebar .logout-button::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a2a3c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'/%3E%3Cpolyline points='16 17 21 12 16 7'/%3E%3Cline x1='21' y1='12' x2='9' y2='12'/%3E%3C/svg%3E");
+}
+
+/* Hover state */
+.superadmin-sidebar a:hover,
+.superadmin-sidebar .logout-button:hover {
+  background: rgba(255, 255, 255, 0.85);
+  color: #1e1e2f;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 255, 255, 0.9);
+}
+.superadmin-sidebar a:hover::before,
+.superadmin-sidebar .logout-button:hover::before {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.08);
+  transform: scale(1.05);
+}
+
+/* Active state */
+.superadmin-sidebar a.active {
+  background: rgba(79, 70, 229, 0.04);
+  color: #4f46e5;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.1);
+}
+.superadmin-sidebar a.active::before {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.1);
+}
+/* Active icon colors (update stroke to indigo) */
+.superadmin-sidebar a.active[href*="dashboard"]::before,
+.superadmin-sidebar a.active[href*="Dashboard"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='3' width='7' height='7'/%3E%3Crect x='14' y='3' width='7' height='7'/%3E%3Crect x='14' y='14' width='7' height='7'/%3E%3Crect x='3' y='14' width='7' height='7'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a.active[href*="companies"]::before,
+.superadmin-sidebar a.active[href*="Companies"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='14' rx='2' ry='2'/%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a.active[href*="users"]::before,
+.superadmin-sidebar a.active[href*="Users"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a.active[href*="analytics"]::before,
+.superadmin-sidebar a.active[href*="Analytics"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 3v18h18'/%3E%3Cpath d='M18 17V9'/%3E%3Cpath d='M13 17V5'/%3E%3Cpath d='M8 17v-3'/%3E%3C/svg%3E");
+}
+.superadmin-sidebar a.active[href*="settings"]::before,
+.superadmin-sidebar a.active[href*="Settings"]::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3Cpath d='M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z'/%3E%3C/svg%3E");
+}
+
+/* Logout button hover - turns red */
+.superadmin-sidebar .logout-button:hover {
+  color: #dc2626;
+}
+.superadmin-sidebar .logout-button:hover::before {
+  background-color: rgba(220, 38, 38, 0.08);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23dc2626' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4'/%3E%3Cpolyline points='16 17 21 12 16 7'/%3E%3Cline x1='21' y1='12' x2='9' y2='12'/%3E%3C/svg%3E");
+}
+
+/* Separator */
+.superadmin-sidebar .separator {
+  margin: 1.25rem 0.75rem;
+  border-top: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.06), transparent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .superadmin-sidebar {
+    width: auto;
+    margin: 0.75rem;
+    border-radius: 1.5rem;
+    height: auto;
+    position: static;
+    background: rgba(255, 255, 255, 0.85);
   }
-  
   .superadmin-sidebar h2 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: white;
-    letter-spacing: -0.02em;
-    padding: 0 1rem 1.2rem;
-    margin: 0;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    padding: 0.5rem 1rem 1rem;
   }
-  
-  .superadmin-sidebar nav {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem 0;
-  }
-  
   .superadmin-sidebar a,
-  .logout-button {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.6rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #94a3b8;
-    text-decoration: none;
-    transition: all 0.2s;
-    border-left: 3px solid transparent;
-    background: transparent;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    font-family: inherit;
+  .superadmin-sidebar .logout-button {
+    padding: 0.6rem 0.75rem;
   }
-  
-  .superadmin-sidebar a:hover,
-  .logout-button:hover {
-    background: rgba(255,255,255,0.05);
-    color: white;
-    border-left-color: #4f46e5;
-    transform: translateX(2px);
+  .superadmin-sidebar a::before,
+  .superadmin-sidebar .logout-button::before {
+    width: 32px;
+    height: 32px;
+    background-size: 20px;
   }
-  
-  .superadmin-sidebar a.active {
-    background: linear-gradient(90deg, rgba(79,70,229,0.15), transparent);
-    color: white;
-    border-left-color: #4f46e5;
-    font-weight: 600;
+}
+
+@media (max-height: 700px) {
+  .superadmin-sidebar {
+    padding: 1rem 0.5rem;
   }
-  
-  .separator {
-    margin: 1rem 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
+  .superadmin-sidebar a,
+  .superadmin-sidebar .logout-button {
+    padding: 0.5rem 0.75rem;
   }
-  
-  /* Custom scrollbar */
-  .superadmin-sidebar::-webkit-scrollbar {
-    width: 5px;
-  }
-  .superadmin-sidebar::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
-    border-radius: 10px;
-  }
-  .superadmin-sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-  }
+}

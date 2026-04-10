@@ -39,6 +39,10 @@ const SuperAdminAuth: React.FC = () => {
     }
   };
 
+  const handleBackToLogin = () => {
+    navigate("/auth/login");
+  };
+
   return (
     <div className="superadmin-login-container">
       <div className="superadmin-login-card">
@@ -52,12 +56,25 @@ const SuperAdminAuth: React.FC = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            disabled={loading}
           />
           {error && <div className="error-message">{error}</div>}
           <button type="submit" className="superadmin-login-btn" disabled={loading}>
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+
+        {/* Go back to regular login */}
+        <div className="back-to-login">
+          <button
+            type="button"
+            className="back-link"
+            onClick={handleBackToLogin}
+            disabled={loading}
+          >
+            ← Back to Login
+          </button>
+        </div>
       </div>
     </div>
   );

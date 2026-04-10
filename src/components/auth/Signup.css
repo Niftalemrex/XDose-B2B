@@ -1,253 +1,420 @@
-/* Signup.css - Glassmorphic Dark Theme */
+/* Modern Pro Signup - Same Dark Glass, Elevated Interactions */
 .signup-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #0a0a0a;
-    position: relative;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  }
-  
-  /* Background layers (same as login) */
-  .signup-container::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 16px 16px;
-    opacity: 0.25;
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  .signup-container::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.95));
-    pointer-events: none;
-    z-index: 0;
-  }
-  
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0a0a0a;
+  position: relative;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+/* Background layers - completely unchanged from original */
+.signup-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.signup-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.95));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle animated orb for depth (same dark palette) */
+.background-orb {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.02) 0%, transparent 70%);
+  filter: blur(80px);
+  animation: orbFloat 30s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-5%, -5%) rotate(5deg); }
+}
+
+/* Card with smooth entrance */
+.signup-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  margin: 1.5rem;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1.5rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+  animation: cardAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+@keyframes cardAppear {
+  0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.signup-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+}
+
+/* Title with subtle gradient */
+.signup-card h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+  color: white;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #fff, #e0e0e0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* Mode toggle - modern pill design */
+.mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.8rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 0.25rem;
+  backdrop-filter: blur(4px);
+}
+
+.mode-toggle button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.mode-toggle button.active {
+  background: white;
+  color: #111;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.mode-toggle button:hover:not(.active):not(:disabled) {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.mode-toggle button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.mode-toggle button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form structure */
+.signup-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Input fields with floating placeholders */
+.signup-card input {
+  width: 100%;
+  padding: 1rem 1rem 0.5rem 1rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0.75rem;
+  color: white;
+  font-size: 0.875rem;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  outline: none;
+  height: 3.2rem;
+  box-sizing: border-box;
+}
+
+/* Floating placeholder effect */
+.signup-card input::placeholder {
+  color: rgba(255,255,255,0.5);
+  transition: transform 0.2s, opacity 0.2s;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.signup-card input:focus::placeholder {
+  transform: translateY(-0.8rem) scale(0.75);
+  opacity: 0.7;
+}
+
+.signup-card input:not(:placeholder-shown)::placeholder {
+  transform: translateY(-0.8rem) scale(0.75);
+  opacity: 0.7;
+}
+
+/* Focus state with subtle glow */
+.signup-card input:focus {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.03);
+}
+
+.signup-card input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Password field peek icon (pure CSS) */
+.signup-card input[type="password"] {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  padding-right: 2.8rem;
+}
+
+.signup-card input[type="password"]:focus {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>');
+}
+
+/* Company code display box - modernized */
+.company-code-box {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 0.75rem;
+  padding: 0.9rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  backdrop-filter: blur(4px);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.company-code-box:hover {
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.company-code-box span {
+  font-size: 0.9rem;
+  color: white;
+  word-break: break-all;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.company-code-box button {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.company-code-box button:hover:not(:disabled) {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.02);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.company-code-box button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.company-code-box button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Info paragraph (green success text) */
+.signup-card p[style*="color: green"] {
+  background: rgba(16,185,129,0.15) !important;
+  border-left: 3px solid #10b981 !important;
+  padding: 0.7rem 1rem !important;
+  border-radius: 0.5rem !important;
+  font-size: 0.8rem !important;
+  margin: 0.75rem 0 0 !important;
+  color: #34d399 !important;
+  text-align: center;
+  backdrop-filter: blur(4px);
+  font-weight: 500;
+}
+
+/* Submit button with loading spinner */
+.signup-card button[type="submit"] {
+  width: 100%;
+  background: white;
+  color: #111;
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.85rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  margin-top: 0.75rem;
+  position: relative;
+}
+
+.signup-card button[type="submit"]:hover:not(:disabled) {
+  background: #f0f0f0;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.signup-card button[type="submit"]:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Loading spinner inside button */
+.signup-card button[type="submit"]:disabled {
+  opacity: 0.8;
+  cursor: progress;
+  color: transparent; /* Hide text while keeping spinner visible */
+}
+
+.signup-card button[type="submit"]:disabled::after {
+  content: "";
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  position: absolute;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Login link */
+.login-link {
+  text-align: center;
+  margin-top: 1.8rem;
+  font-size: 0.875rem;
+  color: #aaa;
+}
+
+.login-link span {
+  cursor: pointer;
+  font-weight: 600;
+  color: #4f46e5;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.login-link span:hover {
+  color: #818cf8;
+  text-shadow: 0 0 8px rgba(129,140,248,0.3);
+}
+
+/* Responsive - fixed overflow */
+@media (max-width: 480px) {
   .signup-card {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 420px;
-    margin: 1rem;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 1.5rem;
-    padding: 2rem 1.5rem;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-    transition: transform 0.2s;
+    padding: 1.8rem 1.2rem;
+    margin: 0.8rem;
+    max-width: 92%;
+    width: 92%;
   }
-  
-  .signup-card:hover {
-    transform: translateY(-2px);
+
+  .signup-card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .mode-toggle button {
+    padding: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .signup-card input {
+    padding: 0.9rem 1rem 0.4rem 1rem;
+    height: 3rem;
+    font-size: 0.85rem;
+  }
+
+  .signup-card input::placeholder {
+    font-size: 0.85rem;
+  }
+
+  .signup-card input:focus::placeholder,
+  .signup-card input:not(:placeholder-shown)::placeholder {
+    transform: translateY(-0.7rem) scale(0.75);
+  }
+
+  .company-code-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 0.8rem;
+  }
+
+  .company-code-box button {
+    width: 100%;
+  }
+}
+
+/* Small height screens */
+@media (max-height: 600px) {
+  .signup-card {
+    padding: 1.5rem 1.5rem;
+    margin: 0.5rem;
   }
   
   .signup-card h2 {
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    color: white;
-    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
   }
   
-  /* Mode toggle */
   .mode-toggle {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 0.75rem;
-    padding: 0.25rem;
+    margin-bottom: 1.2rem;
   }
-  
-  .mode-toggle button {
-    flex: 1;
-    background: transparent;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.6rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #aaa;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .mode-toggle button.active {
-    background: white;
-    color: #111;
-  }
-  
-  .mode-toggle button:hover:not(.active):not(:disabled) {
-    background: rgba(255,255,255,0.1);
-    color: white;
-  }
-  
-  .mode-toggle button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  /* Form inputs */
-  .signup-card form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .signup-card input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 0.75rem;
-    color: white;
-    font-size: 0.875rem;
-    transition: border-color 0.2s, background 0.2s;
-    outline: none;
-  }
-  
-  .signup-card input:focus {
-    border-color: rgba(255,255,255,0.5);
-    background: rgba(255,255,255,0.15);
-  }
-  
-  .signup-card input::placeholder {
-    color: rgba(255,255,255,0.5);
-  }
-  
-  .signup-card input:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  
-  /* Company code display box */
-  .company-code-box {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 0.75rem;
-    padding: 0.75rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .company-code-box span {
-    font-size: 0.875rem;
-    color: white;
-    word-break: break-all;
-    font-weight: 500;
-  }
-  
-  .company-code-box button {
-    background: rgba(255,255,255,0.2);
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.25rem 0.75rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: white;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  
-  .company-code-box button:hover:not(:disabled) {
-    background: rgba(255,255,255,0.3);
-  }
-  
-  .company-code-box button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-  
-  /* Info paragraph (green text) */
-  .signup-card p[style*="color: green"] {
-    background: rgba(16,185,129,0.1);
-    border-left: 3px solid #10b981;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    font-size: 0.8rem;
-    margin: 0.5rem 0 0;
-    color: #10b981 !important;
-    text-align: center;
-  }
-  
-  /* Submit button */
-  .signup-card button[type="submit"] {
-    background: white;
-    color: #111;
-    border: none;
-    border-radius: 0.75rem;
-    padding: 0.75rem;
-    font-weight: 600;
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: background 0.2s;
-    margin-top: 0.5rem;
-  }
-  
-  .signup-card button[type="submit"]:hover:not(:disabled) {
-    background: #f0f0f0;
-  }
-  
-  .signup-card button[type="submit"]:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  
-  /* Login link */
-  .login-link {
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.875rem;
-    color: #aaa;
-  }
-  
-  .login-link span {
-    cursor: pointer;
-    font-weight: 600;
-    transition: color 0.2s;
-  }
-  
-  .login-link span:hover {
-    color: #818cf8;
-  }
-  
-  /* Responsive */
-  @media (max-width: 480px) {
-    .signup-card {
-      padding: 1.5rem 1rem;
-      margin: 1rem;
-    }
-  
-    .signup-card h2 {
-      font-size: 1.5rem;
-    }
-  
-    .mode-toggle button {
-      padding: 0.5rem;
-      font-size: 0.75rem;
-    }
-  
-    .company-code-box {
-      flex-direction: column;
-      text-align: center;
-    }
-  }
+}

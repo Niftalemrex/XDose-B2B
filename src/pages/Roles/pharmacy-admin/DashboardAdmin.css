@@ -1,58 +1,102 @@
-/* DashboardAdmin.css - No gaps, sticky sidebar, clean layout */
-
-
-
+/* Modern DashboardAdmin - Clean White Layout, No Gaps */
 .admin-dashboard-container {
   display: flex;
   height: 100vh;
   width: 100%;
-  background-color: #f8fafc; /* match main content background */
+  background: linear-gradient(145deg, #fafbfc 0%, #f0f4f8 100%);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 
-/* Sidebar – fixed width, no margin */
+/* Sidebar – matches new white glass style (already updated separately) */
 .admin-sidebar {
-  width: 240px;
+  width: 260px;
   flex-shrink: 0;
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(12px);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 2rem 0;
-  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-right: none;
+  padding: 1.5rem 0.75rem;
+  margin: 1rem 0 1rem 1rem;
+  border-radius: 2rem;
+  height: calc(100vh - 2rem);
   overflow-y: auto;
-  margin: 0;
   box-sizing: border-box;
+  box-shadow: 
+    0 20px 40px -12px rgba(0, 0, 0, 0.06),
+    0 4px 18px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-/* Main content – takes remaining space, no extra spacing */
+/* Main content – clean and spacious */
 .admin-main-content {
   flex: 1;
-  min-width: 0;          /* critical to avoid gaps */
+  min-width: 0;
   overflow-y: auto;
-  padding: 0;
-  background-color: #f8fafc;
+  padding: 1.5rem 2rem;
+  background: transparent;
   margin: 0;
   scroll-behavior: smooth;
 }
 
+/* Optional: content card styling for inner components */
+.admin-main-content > * {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Modern scrollbar for main content */
+.admin-main-content::-webkit-scrollbar {
+  width: 6px;
+}
+.admin-main-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+.admin-main-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.admin-main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive behavior */
 @media (max-width: 768px) {
   .admin-dashboard-container {
     flex-direction: column;
     height: auto;
+    min-height: 100vh;
     overflow: visible;
+    background: #f8fafc;
   }
+  
   .admin-sidebar {
-    width: 100%;
+    width: auto;
+    margin: 0.75rem;
+    border-radius: 1.5rem;
     height: auto;
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 1rem 0;
     position: static;
+    background: rgba(255, 255, 255, 0.85);
+  }
+  
+  .admin-main-content {
+    padding: 1rem 1.25rem;
+    overflow-y: visible;
+  }
+}
+
+/* Small height screens */
+@media (max-height: 700px) {
+  .admin-sidebar {
+    padding: 1rem 0.5rem;
   }
   .admin-main-content {
-    overflow-y: visible;
+    padding: 1rem 1.5rem;
   }
 }

@@ -1,208 +1,335 @@
-/* UserManagement.css */
+/* Premium White Glass User Management – Compact KPI Row, SVG Icons, Glass Table */
+
 .user-management {
-    padding: 2rem;
-    background: #f8fafc;
-    color: #1e293b;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    min-height: 100vh;
+  padding: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: transparent;
+  color: #1e293b;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Page Header */
+.user-management .page-header {
+  margin-bottom: 1.5rem;
+}
+
+.user-management .page-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.25rem;
+  background: linear-gradient(145deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.user-management .page-header .subtitle {
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 400;
+  border-left: 3px solid #4f46e5;
+  padding-left: 1rem;
+  margin-top: 0.25rem;
+  opacity: 0.85;
+}
+
+/* ========== Stats Grid – Single Row, Ultra Tiny Cards ========== */
+.user-management .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* adjust number to match actual card count */
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.user-management .stats-grid .stat-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 1.25rem;
+  padding: 0.85rem 0.5rem;
+  box-shadow: 
+    0 10px 20px -8px rgba(0, 0, 0, 0.04),
+    0 4px 8px -4px rgba(0, 0, 0, 0.02),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.95);
+  transition: all 0.2s cubic-bezier(0.2, 0.9, 0.4, 1);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  text-align: left;
+}
+
+.user-management .stats-grid .stat-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 
+    0 16px 28px -10px rgba(0, 0, 0, 0.08),
+    0 6px 12px -4px rgba(0, 0, 0, 0.03),
+    inset 0 0 0 1px rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Hide emoji, show SVG */
+.user-management .stats-grid .stat-card .stat-icon {
+  font-size: 0 !important;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.02), 0 2px 4px rgba(0,0,0,0.02);
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.2s;
+}
+
+.user-management .stats-grid .stat-card:hover .stat-icon {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(79, 70, 229, 0.06);
+  transform: scale(1.02);
+}
+
+/* SVG Icons – customize based on actual metrics (example: companies, users, etc.) */
+.user-management .stats-grid .stat-card:nth-child(1) .stat-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='7' width='20' height='14' rx='2' ry='2'/%3E%3Cpath d='M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16'/%3E%3C/svg%3E");
+}
+.user-management .stats-grid .stat-card:nth-child(2) .stat-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+}
+.user-management .stats-grid .stat-card:nth-child(3) .stat-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 11.08V12a10 10 0 1 1-5.93-9.14'/%3E%3Cpolyline points='22 4 12 14.01 9 11.01'/%3E%3C/svg%3E");
+}
+.user-management .stats-grid .stat-card:nth-child(4) .stat-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ef4444' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3C/svg%3E");
+}
+
+.user-management .stats-grid .stat-card .stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.15rem;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-management .stats-grid .stat-card .stat-label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+  opacity: 0.75;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ========== Table Container – White Glass ========== */
+.user-management .table-container {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  overflow-x: auto;
+  box-shadow: 
+    0 10px 20px -8px rgba(0, 0, 0, 0.04),
+    0 4px 8px -4px rgba(0, 0, 0, 0.02),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.95);
+  padding: 0 0.5rem 0.5rem;
+}
+
+.user-management .table-container h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1.25rem 1rem 0.75rem;
+  margin: 0;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-management .table-container h2::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: #4f46e5;
+  border-radius: 4px;
+}
+
+.user-management .company-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 0.5rem;
+}
+
+.user-management .company-table th,
+.user-management .company-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.85rem;
+}
+
+.user-management .company-table th {
+  background: transparent;
+  font-weight: 600;
+  color: #0f172a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.user-management .company-table tbody tr {
+  transition: background 0.15s;
+  border-radius: 0.75rem;
+}
+
+.user-management .company-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.user-management .company-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status Badge – Glass Pills */
+.user-management .status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(4px);
+  border: 1px solid;
+}
+
+.user-management .status-badge.active {
+  background: rgba(236, 253, 245, 0.8);
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.user-management .status-badge.inactive {
+  background: rgba(254, 242, 242, 0.8);
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+/* Action Buttons – Compact Pills */
+.user-management .actions-cell {
+  white-space: nowrap;
+}
+
+.user-management .action-btn {
+  padding: 0.3rem 0.8rem;
+  margin-right: 0.4rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.65rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+  border: 1px solid;
+}
+
+.user-management .action-btn.enable {
+  background: rgba(236, 253, 245, 0.7);
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+.user-management .action-btn.disable {
+  background: rgba(255, 251, 235, 0.7);
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+.user-management .action-btn.delete {
+  background: rgba(254, 242, 242, 0.7);
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.user-management .action-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(0.95);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.user-management .action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Loading */
+.user-management .user-management-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1rem;
+  background: transparent;
+  color: #475569;
+}
+
+.user-management .user-management-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0,0,0,0.04);
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ========== Responsive ========== */
+@media (max-width: 1100px) {
+  .user-management .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .page-header {
-    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .user-management {
+    padding: 1rem;
   }
-  
-  .page-header h1 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #0f172a;
-    letter-spacing: -0.02em;
-    margin: 0 0 0.25rem;
+  .user-management .stats-grid {
+    gap: 0.75rem;
   }
-  
-  .page-header .subtitle {
-    color: #475569;
-    font-size: 0.875rem;
+  .user-management .stats-grid .stat-card {
+    padding: 0.75rem 0.5rem;
   }
-  
-  /* Stats Cards */
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .stat-card {
-    background: white;
-    border-radius: 1rem;
-    border: 1px solid #e2e8f0;
-    padding: 1.5rem;
-    transition: all 0.2s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  
-  .stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    border-color: #cbd5e1;
-  }
-  
-  .stat-icon {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-  }
-  
-  .stat-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 0.25rem;
-    line-height: 1.2;
-  }
-  
-  .stat-label {
+  .user-management .company-table th,
+  .user-management .company-table td {
+    padding: 0.75rem;
     font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: #64748b;
   }
-  
-  /* Table */
-  .table-container {
-    background: white;
-    border-radius: 1rem;
-    border: 1px solid #e2e8f0;
-    overflow-x: auto;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 480px) {
+  .user-management .stats-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .table-container h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding: 1.25rem 1.5rem 0;
-    margin: 0;
-    color: #0f172a;
-  }
-  
-  .company-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-  }
-  
-  .company-table th,
-  .company-table td {
-    padding: 1rem 1.5rem;
-    text-align: left;
-    border-bottom: 1px solid #e2e8f0;
-    font-size: 0.875rem;
-  }
-  
-  .company-table th {
-    background: #f8fafc;
-    font-weight: 600;
-    color: #0f172a;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.75rem;
-  }
-  
-  .company-table tbody tr:hover {
-    background: #f8fafc;
-  }
-  
-  .status-badge {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-  }
-  
-  .status-badge.active {
-    background: #ecfdf5;
-    color: #059669;
-    border: 1px solid #a7f3d0;
-  }
-  
-  .status-badge.inactive {
-    background: #fef2f2;
-    color: #dc2626;
-    border: 1px solid #fecaca;
-  }
-  
-  .actions-cell {
-    white-space: nowrap;
-  }
-  
-  .action-btn {
-    padding: 0.35rem 0.75rem;
-    margin-right: 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-size: 0.75rem;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-  
-  .action-btn.enable {
-    background: #ecfdf5;
-    color: #059669;
-    border: 1px solid #a7f3d0;
-  }
-  
-  .action-btn.disable {
-    background: #fffbeb;
-    color: #d97706;
-    border: 1px solid #fde68a;
-  }
-  
-  .action-btn.delete {
-    background: #fef2f2;
-    color: #dc2626;
-    border: 1px solid #fecaca;
-  }
-  
-  .action-btn:hover:not(:disabled) {
-    transform: translateY(-1px);
-    filter: brightness(0.95);
-  }
-  
-  .action-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  .user-management-loading {
-    text-align: center;
-    padding: 3rem;
-    background: #f8fafc;
-    color: #475569;
-    font-size: 1rem;
-  }
-  
-  @media (max-width: 768px) {
-    .user-management {
-      padding: 1rem;
-    }
-    .stats-grid {
-      gap: 1rem;
-    }
-    .stat-card {
-      padding: 1rem;
-    }
-    .stat-value {
-      font-size: 1.5rem;
-    }
-    .company-table th,
-    .company-table td {
-      padding: 0.75rem;
-      font-size: 0.75rem;
-    }
-  }
+}
